@@ -4,11 +4,10 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge"; // add if not already: yarn dlx shadcn@latest add badge
+import { Badge } from "@/components/ui/badge";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
-// Import dummy data
-import { kpiData, monthlyApplications, dummyCandidates } from "@/lib/dummy-data"; // adjust path if inline
+import { kpiData, monthlyApplications, dummyCandidates } from "@/lib/dummy-data";
 
 export default function Dashboard() {
   const [searchTerm, setSearchTerm] = useState("");
