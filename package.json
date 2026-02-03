@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_OPTIONS='--disable-warning=DEP0040' next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.37.1",
@@ -20,11 +20,13 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-hook-form": "^7.71.1",
+    "recharts": "^3.7.0",
     "tailwind-merge": "^3.4.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "14.2.5",
     "tailwindcss": "^4",
