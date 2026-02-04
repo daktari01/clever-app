@@ -1,20 +1,29 @@
 import { SignIn } from "@clerk/nextjs";
+import AuthShell from "@/components/auth/AuthShell";
 
 export default function SignInPage() {
   return (
-      <div className="flex min-h-screen items-center justify-center bg-muted/40 p-4">
+      <AuthShell
+          title="Welcome Back"
+          subtitle="Sign in to continue into Clever Recruitment"
+      >
         <SignIn
-            appearance={{
-              elements: {
-                rootBox: "w-full max-w-md mx-auto",
-                card: "shadow-xl border bg-card",
-              },
-            }}
             routing="path"
             path="/sign-in"
             signUpUrl="/sign-up"
             forceRedirectUrl="/dashboard"
+            appearance={{
+              elements: {
+                card: "clerk-card",
+                formFieldInput: "clerk-input",
+                formButtonPrimary: "clerk-button",
+                socialButtonsBlockButton: "clerk-social-btn",
+                footerActionLink: "clerk-link",
+                headerTitle: "hidden",
+                headerSubtitle: "hidden",
+              },
+            }}
         />
-      </div>
+      </AuthShell>
   );
 }
