@@ -12,8 +12,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
       <ClerkProvider>
-        <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <html lang="en" suppressHydrationWarning>
+        <body
+            className={`${inter.className} min-h-screen 
+          bg-gradient-to-br from-blue-50 via-white to-purple-50 
+          dark:from-slate-950 dark:via-slate-900 dark:to-indigo-950 
+          text-foreground`}
+        >
+        {children}
+        </body>
         </html>
       </ClerkProvider>
   );
