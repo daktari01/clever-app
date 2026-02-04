@@ -74,7 +74,9 @@ export default function Dashboard() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredCandidates = candidates.filter((candidate) =>
-      candidate.name.toLowerCase().includes(searchTerm.toLowerCase())
+      candidate.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      candidate.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      candidate.stage.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
