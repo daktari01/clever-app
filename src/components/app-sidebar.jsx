@@ -72,7 +72,6 @@ export function AppSidebar() {
                         )}
                     >
                       <Link href={item.url} className="flex items-center gap-3">
-                        {/* Icon */}
                         <Icon
                             className={cn(
                                 "h-5 w-5 transition-colors",

@@ -45,25 +45,25 @@ const applicationTrends = [
 
 const candidates = [
   {
-    name: "Sarah Johnson",
+    name: "Sarah Wafula",
     role: "Frontend Engineer",
     stage: "Interviewed",
     date: "2026-01-15",
   },
   {
-    name: "Michael Chen",
+    name: "Michael Otieno",
     role: "Backend Engineer",
     stage: "Offered",
     date: "2026-01-18",
   },
   {
-    name: "Emily Davis",
+    name: "Emily Wambui",
     role: "Product Designer",
     stage: "Applied",
     date: "2026-01-20",
   },
   {
-    name: "James Wilson",
+    name: "James Karisa",
     role: "DevOps Engineer",
     stage: "Hired",
     date: "2026-01-22",
@@ -173,51 +173,82 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-         {/*Candidates Table*/}
+        {/*Candidates Table*/}
         <Card className="rounded-2xl border border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-md overflow-hidden">
           <CardHeader>
             <CardTitle className="text-lg font-semibold">
               Recent Candidates
             </CardTitle>
+            <p className="text-sm text-muted-foreground">
+              Track your latest applicants in the hiring pipeline
+            </p>
           </CardHeader>
 
           <CardContent>
-            <div className="rounded-2xl overflow-hidden">
-              <Table>
+            <div className="overflow-hidden rounded-2xl">
+              <Table className="border-separate border-spacing-y-3">
+                {/* Header */}
                 <TableHeader>
-                  <TableRow className="bg-gradient-to-r from-blue-500/10 to-purple-500/10">
-                    <TableHead>Name</TableHead>
-                    <TableHead>Role</TableHead>
-                    <TableHead>Stage</TableHead>
-                    <TableHead>Date</TableHead>
+                  <TableRow className="bg-transparent">
+                    {/* New Index column */}
+                    <TableHead className="text-xs font-semibold uppercase tracking-wide text-muted-foreground px-4">
+                      #
+                    </TableHead>
+
+                    {["Candidate", "Role", "Stage", "Date"].map((label) => (
+                        <TableHead
+                            key={label}
+                            className="text-xs font-semibold uppercase tracking-wide text-muted-foreground px-4"
+                        >
+                          {label}
+                        </TableHead>
+                    ))}
                   </TableRow>
                 </TableHeader>
 
+                {/* Body */}
                 <TableBody>
                   {filteredCandidates.length > 0 ? (
                       filteredCandidates.map((candidate, index) => (
                           <TableRow
                               key={index}
-                              className="hover:bg-white/40 dark:hover:bg-white/10 transition"
+                              className="
+                  group
+                  rounded-xl
+                  bg-white/40 dark:bg-white/5
+                  backdrop-blur-md
+                  shadow-sm
+                  hover:shadow-lg
+                  hover:bg-gradient-to-r hover:from-blue-500/10 hover:to-purple-500/10
+                  transition-all duration-300
+                "
                           >
-                            <TableCell className="font-medium">
+                            <TableCell className="px-4 py-4 font-semibold text-slate-900 dark:text-white">
+                              {index + 1}
+                            </TableCell>
+
+                            <TableCell className="px-4 py-4 font-semibold text-slate-900 dark:text-white">
                               {candidate.name}
                             </TableCell>
 
-                            <TableCell>{candidate.role}</TableCell>
+                            <TableCell className="px-4 py-4 text-sm text-slate-700 dark:text-slate-300">
+                              {candidate.role}
+                            </TableCell>
 
-                            <TableCell>
+                            <TableCell className="px-4 py-4">
                               <StageBadge stage={candidate.stage} />
                             </TableCell>
 
-                            <TableCell>{candidate.date}</TableCell>
+                            <TableCell className="px-4 py-4 text-sm text-muted-foreground">
+                              {candidate.date}
+                            </TableCell>
                           </TableRow>
                       ))
                   ) : (
                       <TableRow>
                         <TableCell
-                            colSpan={4}
-                            className="text-center py-6 text-muted-foreground"
+                            colSpan={5}
+                            className="text-center py-10 text-muted-foreground"
                         >
                           No candidates found.
                         </TableCell>
@@ -228,6 +259,7 @@ export default function Dashboard() {
             </div>
           </CardContent>
         </Card>
+
       </div>
   );
 }
